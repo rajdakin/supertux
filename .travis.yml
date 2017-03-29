@@ -36,6 +36,9 @@ env:
     # BINTRAY_KEY env var
     - secure: "E++FmjzZZrvkJpUHZajLUaO1wd0QHcyVidVx8qVeGUJm/khCPBJuhkSe6R2BphcBeeAuhVlsXo26SWCAn89r2KT2OHB/lwtK2CWhO5vOl5bI5o4nFc+m55e2gDIebSBrXQPITEQJpQx1zBL4FVw/A2xQRl+IcjF/EiIzG8Znslc="
     - GLBINDING_VERSION=2.1.1
+    - GH_REPO_NAME: SuperTux.github.io
+    - GH_REPO_REF: github.com/SuperTux/SuperTux.github.io
+
   matrix:
     - BUILD_TYPE="Debug"
     - BUILD_TYPE="Release"
@@ -69,6 +72,7 @@ script:
 
 after_success:
   - ../.travis/package.sh
+  - if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ../travis/build_documentation.sh; fi
 
 deploy:
   - provider: script
