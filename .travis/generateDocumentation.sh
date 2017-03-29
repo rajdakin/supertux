@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-shopt -s nullglob
-if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && ["$BUILD_TYPE" = "Release"] && ["$USE_GLBINDING" = "ON"]; then
+set -e
+if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && [ "$BUILD_TYPE" = "Release" ] && [ "$USE_GLBINDING" = "ON" ]; then
   echo 'Setting up git'
   pwd
   git config --global push.default simple
