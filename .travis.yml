@@ -16,7 +16,7 @@ sudo: required
 
 compiler:
   - gcc
-  #- clang
+  - clang
 
 matrix:
   fast_finish: true
@@ -26,7 +26,7 @@ matrix:
 
 os:
   - linux
-  #- osx
+  - osx
 
 env:
   global:
@@ -40,9 +40,9 @@ env:
     - GH_REPO_REF: github.com/SuperTux/SuperTux.github.io
 
   matrix:
-    #- BUILD_TYPE="Debug"
+    - BUILD_TYPE="Debug"
     - BUILD_TYPE="Release"
-    #- USE_GLBINDING=OFF
+    - USE_GLBINDING=OFF
     - USE_GLBINDING=ON
 
 before_install:
@@ -72,7 +72,6 @@ script:
 
 after_success:
   - ../.travis/package.sh
-  #- if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then ../.travis/generateDocumentation.sh; fi
   - ../.travis/generateDocumentation.sh
 
 deploy:
