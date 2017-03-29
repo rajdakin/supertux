@@ -16,7 +16,7 @@ sudo: required
 
 compiler:
   - gcc
-  - clang
+  #- clang
 
 matrix:
   fast_finish: true
@@ -26,7 +26,7 @@ matrix:
 
 os:
   - linux
-  - osx
+  #- osx
 
 env:
   global:
@@ -72,7 +72,7 @@ script:
 
 after_success:
   - ../.travis/package.sh
-  - if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ../.travis/build_documentation.sh; fi
+  - if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ../.travis/generateDocumentation.sh; fi
 
 deploy:
   - provider: script
