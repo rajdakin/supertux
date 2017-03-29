@@ -1,6 +1,6 @@
 #!/bin/sh
 echo 'Running script'
-if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Release" ];  then
+if  [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Release" ];  then
   echo 'Setting up git'
   pwd
   git config --global push.default simple
