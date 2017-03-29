@@ -1,6 +1,6 @@
 #!/bin/sh
 echo 'Running script'
-if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ]; then #&& [ "$BUILD_TYPE" = "Release" ] && [ "$USE_GLBINDING" = "ON" ]; then
+if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Release" ]  then
   echo 'Setting up git'
   pwd
   git config --global push.default simple
@@ -13,10 +13,10 @@ if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ]; then #&& [ "$BUILD_TYPE
   # Clone the Supertux pages repository
   git clone https://github.com/SuperTux/SuperTux.github.io.git
   # Copy documentation there
-  cp -r docs/doxygen/html SuperTux.github.io.git/docs
-  ls SuperTux.github.io.git/docs/
+  cp -r docs/doxygen/html SuperTux.github.io/docs
+  ls SuperTux.github.io/docs/
   # Commit
-  cd SuperTux.github.io.git
+  cd SuperTux.github.io
   git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
 
   # Force push to the remote
