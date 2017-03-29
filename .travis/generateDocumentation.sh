@@ -1,12 +1,12 @@
 #!/bin/sh
 echo 'Running script'
-if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Release" ] || true;  then
+if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Release" ];  then
   echo 'Setting up git'
   pwd
   git config --global push.default simple
   # Pretend to be an user called Travis CI.
-  git config user.name "Travis CI Documentation Uploader"
-  git config user.email "travis@travis-ci.org"
+  git config user.name "Documentation Uploader"
+  git config user.email "documentationupload@supertux.github.io"
 
   echo 'Generating documentation using doxygen'
   doxygen docs/Doxyfile
@@ -15,11 +15,10 @@ if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] [ "$BUILD_TYPE" = "Relea
   # Copy documentation there
   cp -r docs/doxygen/html SuperTux.github.io/doc
   # Commit
-  cd SuperTux.github.io
-  cd doc
-  git add .
+  cd SuperTux.github.io/doc
+  git add . > /dev/null
   cd ..
-  git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
+  git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}" > /dev/null
 
   # Force push to the remote
   # The ouput is redirected to /dev/null to hide any sensitive credential data
