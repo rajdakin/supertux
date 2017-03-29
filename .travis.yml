@@ -72,7 +72,8 @@ script:
 
 after_success:
   - ../.travis/package.sh
-  - if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then sh ../.travis/generateDocumentation.sh; fi
+  #- if [ $TRAVIS_BRANCH = 'doxytest' ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then ../.travis/generateDocumentation.sh; fi
+  - ../.travis/generateDocumentation.sh
 
 deploy:
   - provider: script

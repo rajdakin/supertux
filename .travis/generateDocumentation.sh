@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e
+echo 'Running script'
 if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && [ "$BUILD_TYPE" = "Release" ] && [ "$USE_GLBINDING" = "ON" ]; then
   echo 'Setting up git'
   pwd
