@@ -1,6 +1,6 @@
 #!/bin/sh
 echo 'Running script'
-if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && [ "$BUILD_TYPE" = "Release" ] && [ "$USE_GLBINDING" = "ON" ]; then
+if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ]; then #&& [ "$BUILD_TYPE" = "Release" ] && [ "$USE_GLBINDING" = "ON" ]; then
   echo 'Setting up git'
   pwd
   git config --global push.default simple
