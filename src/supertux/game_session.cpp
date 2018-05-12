@@ -116,7 +116,7 @@ GameSession::restart_level(bool after_death)
 
   InputManager::current()->reset();
 
-  currentsector = 0;
+  currentsector = nullptr;
 
   const std::string base_dir = FileSystem::dirname(levelfile);
   if(base_dir == "./") {
