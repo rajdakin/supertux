@@ -483,7 +483,7 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     #   -ansi
     # fails on clang:
     #   -Wlogical-op -Wstrict-null-sentinel
-    SET(SUPERTUX2_EXTRA_WARNING_FLAGS "-fdiagnostics-show-option -pedantic -Wno-long-long -Wcast-align -Wdisabled-optimization -Winit-self -Winvalid-pch -Wmissing-include-dirs -Wmissing-noreturn -Wpacked -Wredundant-decls -Wstack-protector -Wformat=2 -Weffc++ -Wctor-dtor-privacy  -Wno-unused-parameter -Wshadow -Wnon-virtual-dtor -Wcast-qual")
+    SET(SUPERTUX2_EXTRA_WARNING_FLAGS "-fdiagnostics-show-option -pedantic -Wno-long-long -Wcast-align -Wdisabled-optimization -Winit-self -Winvalid-pch -Wmissing-include-dirs -Wmissing-noreturn -Wpacked -Wredundant-decls -Wstack-protector -Wformat=2 -Wno-unused-parameter -Wshadow -Wcast-qual")
   ENDIF(WARNINGS)
 endif()
 
@@ -596,6 +596,8 @@ target_link_libraries(supertux2 supertux2_lib)
 set_target_properties(supertux2 PROPERTIES OUTPUT_NAME supertux2)
 set_target_properties(supertux2_lib PROPERTIES OUTPUT_NAME supertux2)
 set_target_properties(supertux2_lib PROPERTIES COMPILE_FLAGS "${SUPERTUX2_EXTRA_WARNING_FLAGS}")
+
+set_target_properties(supertux2_c PROPERTIES COMPILE_FLAGS "${SUPERTUX2_EXTRA_WARNING_FLAGS}")
 
 IF(WIN32)
   ## Copy dlls on windows

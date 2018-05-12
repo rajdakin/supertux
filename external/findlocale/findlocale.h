@@ -1,9 +1,9 @@
 #ifndef __findlocale_h_
 #define __findlocale_h_
 
-typedef const char* FL_Lang;
-typedef const char* FL_Country;
-typedef const char* FL_Variant;
+typedef char* FL_Lang;
+typedef char* FL_Country;
+typedef char* FL_Variant;
 
 typedef struct {
   FL_Lang    lang;

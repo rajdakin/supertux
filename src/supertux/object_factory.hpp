@@ -48,7 +48,7 @@ public:
 
 private:
   void add_factory(const char* name,
-                   std::function<GameObjectPtr (const ReaderMapping&)> func)
+                   std::function<GameObjectPtr (const ReaderMapping&)>& func)
   {
     assert(factories.find(name) == factories.end());
     factories[name] = func;
