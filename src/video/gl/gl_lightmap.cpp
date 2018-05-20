@@ -42,6 +42,13 @@
 #include "video/surface.hpp"
 #include "video/texture_manager.hpp"
 
+#include "util/log.hpp"
+#ifdef USE_GLBINDING
+#include <glbinding/gl/gl.h>
+#else
+#include <GL/glew.h>
+#endif
+
 inline int next_po2(int val)
 {
   int result = 1;
@@ -56,7 +63,9 @@ GLLightmap::GLLightmap() :
   m_lightmap_width(),
   m_lightmap_height(),
   m_lightmap_uv_right(),
-  m_lightmap_uv_bottom()
+  m_lightmap_uv_bottom(),
+  fbo(0),
+  depthbuffer(0)
 {
   m_lightmap_width = SCREEN_WIDTH / s_LIGHTMAP_DIV;
   m_lightmap_height = SCREEN_HEIGHT / s_LIGHTMAP_DIV;
@@ -68,24 +77,57 @@ GLLightmap::GLLightmap() :
   m_lightmap_uv_right = static_cast<float>(m_lightmap_width) / static_cast<float>(width);
   m_lightmap_uv_bottom = static_cast<float>(m_lightmap_height) / static_cast<float>(height);
   TextureManager::current()->register_texture(m_lightmap.get());
+
+  glGenFramebuffers(1, &fbo);
+  glGenRenderbuffers(1, &depthbuffer);
+  
+  glBindRenderbuffer(GL_RENDERBUFFER, depthbuffer);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, m_lightmap_width, m_lightmap_height);
+  glBindRenderbuffer(GL_RENDERBUFFER, 0);
+  
+  glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthbuffer);
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_lightmap->get_handle(), 0);
+  
+  GLenum err = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+  if (err != GL_FRAMEBUFFER_COMPLETE) {
+    log_warning << "Couldn't create FBO: " << err << "\n";
+  }
+  
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 GLLightmap::~GLLightmap()
 {
+  glDeleteFramebuffers(1, &fbo);
+  glDeleteRenderbuffers(1, &depthbuffer);
 }
 
 void
 GLLightmap::start_draw(const Color &ambient_color)
 {
-
   glGetFloatv(GL_VIEWPORT, m_old_viewport); //save viewport
+#if 0
   glViewport(m_old_viewport[0], m_old_viewport[3] - m_lightmap_height + m_old_viewport[1], m_lightmap_width, m_lightmap_height);
+#else
+  // Using an FBO
+  glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+  glViewport(0, 0, m_lightmap_width, m_lightmap_height);
+#endif
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
+#if 0
 #ifdef GL_VERSION_ES_CM_1_0
   glOrthof(0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, -1.0, 1.0);
 #else
   glOrtho(0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, -1.0, 1.0);
+#endif
+#else
+#ifdef GL_VERSION_ES_CM_1_0
+  glOrthof(m_old_viewport[0], SCREEN_WIDTH, SCREEN_HEIGHT, m_old_viewport[1], -1.0, 1.0);
+#else
+  glOrtho(m_old_viewport[0], SCREEN_WIDTH, SCREEN_HEIGHT, m_old_viewport[1], -1.0, 1.0);
+#endif
 #endif
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
@@ -98,8 +140,13 @@ void
 GLLightmap::end_draw()
 {
   glDisable(GL_BLEND);
+#if 0
   glBindTexture(GL_TEXTURE_2D, m_lightmap->get_handle());
   glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, m_old_viewport[0], m_old_viewport[3] - m_lightmap_height + m_old_viewport[1], m_lightmap_width, m_lightmap_height);
+#else
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glBindTexture(GL_TEXTURE_2D, m_lightmap->get_handle());
+#endif
 
   glViewport(m_old_viewport[0], m_old_viewport[1], m_old_viewport[2], m_old_viewport[3]);
   glMatrixMode(GL_PROJECTION);
