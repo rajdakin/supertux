@@ -110,7 +110,6 @@ inline void intern_draw(float left, float top, float right, float bottom,
   // FIXME: find a better way to restore the blend mode
   //glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
   glDisableClientState(GL_COLOR_ARRAY);
-  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 } // namespace
