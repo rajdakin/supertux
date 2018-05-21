@@ -41,7 +41,19 @@ inline void intern_draw(float left, float top, float right, float bottom,
     std::swap(uv_top, uv_bottom);
 
   glBlendFunc(blend.sfactor, blend.dfactor);
-  glColor4f(color.red, color.green, color.blue, color.alpha * alpha);
+  //glColor4f(color.red, color.green, color.blue, color.alpha * alpha);
+  
+  float colors[4 * 4];
+  colors[0] = color.red;
+  colors[1] = color.green;
+  colors[2] = color.blue;
+  colors[3] = color.alpha * alpha;
+  memcpy(colors + 4, colors, 4 * sizeof(float));
+  memcpy(colors + 8, colors, 4 * sizeof(float));
+  memcpy(colors + 12, colors, 4 * sizeof(float));
+  
+  glEnableClientState(GL_COLOR_ARRAY);
+  glColorPointer(4, GL_FLOAT, 0, colors);
 
   // unrotated blit
   if (angle == 0.0f) {
@@ -96,7 +108,8 @@ inline void intern_draw(float left, float top, float right, float bottom,
   }
 
   // FIXME: find a better way to restore the blend mode
-  glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+  //glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+  glDisableClientState(GL_COLOR_ARRAY);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 

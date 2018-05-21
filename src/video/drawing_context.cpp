@@ -503,6 +503,8 @@ DrawingContext::handle_drawing_requests(DrawingRequests& requests_)
         break;
     }
   }
+  
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void
