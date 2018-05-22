@@ -3,9 +3,9 @@ os: Visual Studio 2015
 configuration: Release
 platform: x86
 
-environment:
-  DOWNLOAD_APIKEY:
-    secure: SEKmgfhiwujukYrr2xjqp63FEwvDUcoQOy7pCuYSyu+CTbGRRIzTbUCwwu4EPJmE
+#environment:
+#  DOWNLOAD_APIKEY:
+#    secure: SEKmgfhiwujukYrr2xjqp63FEwvDUcoQOy7pCuYSyu+CTbGRRIzTbUCwwu4EPJmE
 
 branches:
   except:
@@ -68,8 +68,8 @@ artifacts:
 deploy:
 - provider: GitHub
   description: 'SuperTux release'
-  auth_token:
-    secure: 1sgroG7ycKHC6R2y/V7DECd/SHxXK4CNSDU7zZOnAlyBiVKT9ykvRKWt2DGcEZDq
+  #auth_token:
+  #  secure: 1sgroG7ycKHC6R2y/V7DECd/SHxXK4CNSDU7zZOnAlyBiVKT9ykvRKWt2DGcEZDq
   artifact: setup
   draft: true
   on:

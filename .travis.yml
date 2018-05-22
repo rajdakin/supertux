@@ -33,11 +33,11 @@ env:
   global:
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
     # via the "travis encrypt" command using the project repo's public key
-    - secure: "eVEyzIVjDlB16EPkXmj74tyF9pgX34kpgvBUMXJJ+hduuPwaGC6vl8T164fNQUIua2Z2/PqxmTLJRR3n5Bbkdf859NdX+4JUzc3SoFEKlgcLMYnOQeuimUAiMKxe4vmC4sub5LZVFsp9ORzVYkXgiMBnxiD5GuYxvZPy1lCaH9E="
+    #- secure: "eVEyzIVjDlB16EPkXmj74tyF9pgX34kpgvBUMXJJ+hduuPwaGC6vl8T164fNQUIua2Z2/PqxmTLJRR3n5Bbkdf859NdX+4JUzc3SoFEKlgcLMYnOQeuimUAiMKxe4vmC4sub5LZVFsp9ORzVYkXgiMBnxiD5GuYxvZPy1lCaH9E="
     # BINTRAY_KEY env var
-    - secure: "E++FmjzZZrvkJpUHZajLUaO1wd0QHcyVidVx8qVeGUJm/khCPBJuhkSe6R2BphcBeeAuhVlsXo26SWCAn89r2KT2OHB/lwtK2CWhO5vOl5bI5o4nFc+m55e2gDIebSBrXQPITEQJpQx1zBL4FVw/A2xQRl+IcjF/EiIzG8Znslc="
+    #- secure: "E++FmjzZZrvkJpUHZajLUaO1wd0QHcyVidVx8qVeGUJm/khCPBJuhkSe6R2BphcBeeAuhVlsXo26SWCAn89r2KT2OHB/lwtK2CWhO5vOl5bI5o4nFc+m55e2gDIebSBrXQPITEQJpQx1zBL4FVw/A2xQRl+IcjF/EiIzG8Znslc="
     # DOWNLOAD_APIKEY env var
-    - secure: "ZfRyz4HyLtCtHSrCzB+VwdRP3QLbhcXiqsUAhBYNBz6fU8B4l7UchcRrTVsSQJMJeQQ3V7baJsqi4vAcxtd2aV/UDb82aWy9+lwexecjS+fVNh6Ace8j69PVeywpVVonY2Mk/8LeEAvBkjB1OeRlE+gMC08QwOiHqkR2qVcwNYA="
+    #- secure: "ZfRyz4HyLtCtHSrCzB+VwdRP3QLbhcXiqsUAhBYNBz6fU8B4l7UchcRrTVsSQJMJeQQ3V7baJsqi4vAcxtd2aV/UDb82aWy9+lwexecjS+fVNh6Ace8j69PVeywpVVonY2Mk/8LeEAvBkjB1OeRlE+gMC08QwOiHqkR2qVcwNYA="
     - GLBINDING_VERSION=2.1.4
   matrix:
     - BUILD_TYPE="Debug"
@@ -91,8 +91,8 @@ deploy:
       all_branches: true
       condition: $RELEASE = ON
   - provider: releases
-    api_key:
-      secure: oOoWGIvtMne9b413EGv3GSaV8PE/X1P3e85hIdTvRdxs5VTWHi9eeWpEknru8N8hQ+iIkvD2QpUvwL6Qgf7myP3OwXWEf7o6+Qxjfl49oJaROTeVUR7uzOYTmYYTCZG0b3jQKYu5JkVqJzwTNmT0GturHkW5pzsAy/rHUDuLfkI=
+    #api_key:
+    #  secure: oOoWGIvtMne9b413EGv3GSaV8PE/X1P3e85hIdTvRdxs5VTWHi9eeWpEknru8N8hQ+iIkvD2QpUvwL6Qgf7myP3OwXWEf7o6+Qxjfl49oJaROTeVUR7uzOYTmYYTCZG0b3jQKYu5JkVqJzwTNmT0GturHkW5pzsAy/rHUDuLfkI=
     file: "SuperTux*"
     file_glob: true
     skip_cleanup: true
@@ -117,15 +117,8 @@ addons:
     - sshpass
   coverity_scan:
     project:
-      name: "SuperTux/supertux"
+      name: "rajdakin/supertux"
       description: "Build submitted via Travis CI"
-    notification_email: supertux-commit@lists.lethargik.org
     build_command_prepend: "cmake . && make clean"
     build_command:   "make -j 3"
     branch_pattern: coverity_scan
-
-notifications:
-  email:
-    - supertux-commit@lists.lethargik.org
-  slack:
-    secure: cH9u9+EfaPGIcmIcy06hxp5coMmBSKorgABXwE5M06hWbwL+4SIaAlOf9QhrOPi7TZKyyI5GXh687pWNtrgUzaBFhNrPOa/tIzr6kJryAkoFBRdn0sOsf/xYyDgTUfzS79HLYxdv7KDckmiPcgTxGGJOJ3797HBeKaEeufefzlU=
