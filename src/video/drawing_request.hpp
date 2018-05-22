@@ -31,6 +31,10 @@
 #include "video/font.hpp"
 #include "video/glutil.hpp"
 
+#ifdef HAVE_OPENGL
+#include "gl/gl_texture.hpp"
+#endif
+
 class Surface;
 
 enum RequestType
@@ -40,32 +44,44 @@ enum RequestType
 
 struct DrawingRequestData
 {
+  virtual bool has_surface() { return false; }
+  
   virtual ~DrawingRequestData()
   {}
 };
 
-struct SurfaceRequest : public DrawingRequestData
+struct TexturedDrawingRequestData : public DrawingRequestData
 {
-  SurfaceRequest() :
+  virtual bool has_surface() override { return true; }
+  
+  TexturedDrawingRequestData() :
     surface()
   {}
-
+  
   const Surface* surface;
+
+private:
+  TexturedDrawingRequestData(const TexturedDrawingRequestData&) = delete;
+  TexturedDrawingRequestData& operator=(const TexturedDrawingRequestData&) = delete;
+};
+
+struct SurfaceRequest : public TexturedDrawingRequestData
+{
+  SurfaceRequest()
+  {}
 
 private:
   SurfaceRequest(const SurfaceRequest&) = delete;
   SurfaceRequest& operator=(const SurfaceRequest&) = delete;
 };
 
-struct SurfacePartRequest : public DrawingRequestData
+struct SurfacePartRequest : public TexturedDrawingRequestData
 {
   SurfacePartRequest() :
-    surface(),
     srcrect(),
     dstsize()
   {}
 
-  const Surface* surface;
   Rectf srcrect;
   Sizef dstsize;
 
@@ -182,10 +198,13 @@ struct DrawingRequest
     color(1.0f, 1.0f, 1.0f, 1.0f),
     request_data()
   {}
-
+  
   bool operator<(const DrawingRequest& other) const
   {
-    return layer < other.layer;
+    if (request_data && request_data->has_surface() && other.request_data && other.request_data->has_surface())
+      return (layer < other.layer) || ((layer == other.layer) && (static_cast<GLTexture&>(*reinterpret_cast<TexturedDrawingRequestData*>(request_data)->surface->get_texture()) < static_cast<GLTexture&>(*reinterpret_cast<TexturedDrawingRequestData*>(other.request_data)->surface->get_texture())));
+    else
+      return layer < other.layer;
   }
 };
 

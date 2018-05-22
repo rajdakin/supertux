@@ -75,6 +75,11 @@ public:
   {
     m_image_height = height;
   }
+  
+  bool operator<(const GLTexture& other) const
+  {
+    return m_handle < other.m_handle;
+  }
 
 private:
   void set_texture_params();
