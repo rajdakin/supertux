@@ -201,9 +201,11 @@ struct DrawingRequest
   
   bool operator<(const DrawingRequest& other) const
   {
+#ifdef HAVE_OPENGL
     if (request_data && request_data->has_surface() && other.request_data && other.request_data->has_surface())
       return (layer < other.layer) || ((layer == other.layer) && (static_cast<GLTexture&>(*reinterpret_cast<TexturedDrawingRequestData*>(request_data)->surface->get_texture()) < static_cast<GLTexture&>(*reinterpret_cast<TexturedDrawingRequestData*>(other.request_data)->surface->get_texture())));
     else
+#endif
       return layer < other.layer;
   }
 };
