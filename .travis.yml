@@ -45,7 +45,6 @@ env:
     - USE_GLBINDING=ON
 
 before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   # Possibly should not generate packages for all builds?
   - export PACKAGE="ON";
   - if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && [ "$BUILD_TYPE" = "Release" ]; then
