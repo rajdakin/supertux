@@ -2,7 +2,6 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9e7e1e2b9935467fa400d516c245ac4f)](https://www.codacy.com/app/rajdakin/supertux?utm_source=github.com&utm_medium=referral&utm_content=rajdakin/supertux&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/rajdakin/supertux.svg?branch=master)](https://travis-ci.org/rajdakin/supertux)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rajdakin/supertux?svg=true)](https://ci.appveyor.com/project/rajdakin/supertux)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/15807/badge.svg)](https://scan.coverity.com/projects/15807)
 [![Github All Local Releases](https://img.shields.io/github/downloads/rajdakin/supertux/total.svg?maxAge=2592000)](https://github.com/rajdakin/supertux)
 
