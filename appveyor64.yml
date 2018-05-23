@@ -3,9 +3,9 @@ os: Visual Studio 2015
 configuration: Release
 platform: x64
 
-#environment:
-#  DOWNLOAD_APIKEY:
-#    secure: SEKmgfhiwujukYrr2xjqp63FEwvDUcoQOy7pCuYSyu+CTbGRRIzTbUCwwu4EPJmE
+environment:
+  DOWNLOAD_APIKEY:
+    secure: SEKmgfhiwujukYrr2xjqp63FEwvDUcoQOy7pCuYSyu+CTbGRRIzTbUCwwu4EPJmE
 
 branches:
   except:

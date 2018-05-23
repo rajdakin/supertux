@@ -83,22 +83,22 @@ script:
 after_success:
   - ../.travis/package.sh
 
-deploy:
-  - provider: script
-    script: ../.travis/deploy.sh
-    skip_cleanup: true
-    on:
-      all_branches: true
-      condition: $RELEASE = ON
-  - provider: releases
-    #api_key:
-    #  secure: oOoWGIvtMne9b413EGv3GSaV8PE/X1P3e85hIdTvRdxs5VTWHi9eeWpEknru8N8hQ+iIkvD2QpUvwL6Qgf7myP3OwXWEf7o6+Qxjfl49oJaROTeVUR7uzOYTmYYTCZG0b3jQKYu5JkVqJzwTNmT0GturHkW5pzsAy/rHUDuLfkI=
-    file: "SuperTux*"
-    file_glob: true
-    skip_cleanup: true
-    on:
-      tags: true
-      condition: $RELEASE = ON
+#deploy:
+#  - provider: script
+#    script: ../.travis/deploy.sh
+#    skip_cleanup: true
+#    on:
+#      all_branches: true
+#      condition: $RELEASE = ON
+#  - provider: releases
+#    api_key:
+#      secure: oOoWGIvtMne9b413EGv3GSaV8PE/X1P3e85hIdTvRdxs5VTWHi9eeWpEknru8N8hQ+iIkvD2QpUvwL6Qgf7myP3OwXWEf7o6+Qxjfl49oJaROTeVUR7uzOYTmYYTCZG0b3jQKYu5JkVqJzwTNmT0GturHkW5pzsAy/rHUDuLfkI=
+#    file: "SuperTux*"
+#    file_glob: true
+#    skip_cleanup: true
+#    on:
+#      tags: true
+#      condition: $RELEASE = ON
 
 addons:
   apt:
