@@ -33,7 +33,7 @@ env:
   global:
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
     # via the "travis encrypt" command using the project repo's public key
-    #- secure: "eVEyzIVjDlB16EPkXmj74tyF9pgX34kpgvBUMXJJ+hduuPwaGC6vl8T164fNQUIua2Z2/PqxmTLJRR3n5Bbkdf859NdX+4JUzc3SoFEKlgcLMYnOQeuimUAiMKxe4vmC4sub5LZVFsp9ORzVYkXgiMBnxiD5GuYxvZPy1lCaH9E="
+    - secure: "cci9kVxJZ8DHgMCJjVIAYnXe3UWBoOZMH/kIyT4xiVXvMxFmP0qdKzaWb5RWz3r7cq2NDdvV981RNyvi+uhkpEOEp4oymBUUH7fn5vlLQjM53kH5o0I0ORM+0ECPOLDWdVQAuT12GlhL6DGekBWHF2SwQoLihR0PhH54i5Vhq7tszHY/Z/j3SQwSX5x5xkN7aJ9JW0eqYDyUVB5ZmYeQ+vdU36+I/3tc+DmiaVjrqlSNhTAdKv6W3UEPG8LQRKluHRb6fOqF/6C2OfsVHnwMDvoWhRRWzAxXVzRWblntTyPA1ZZf2lWMquDTIzbdgJQ2Bf2syBbU6C5VukPJN0YHKxtY/Q7TUvdKgv3w1xfxyYHzftD+Z8+G4pofldx5ZVuhT3xHoCSDTe7kJWITBkdJ9JvQ8+/Pekxa6Ybx+LBZDIz40pKTH1n8VTyb/yb3FiNc6+fsbhDCLnKebHKRsypErF+wEnpt2b7D7L14WLNh7azpsdXdrgBhM/4SE+7IMMYgRsKQS30RMI4Z69V/SZUkzk78lcnVqsjJ5rq6TrzTeYyej025dykjc9m5kuKq4vEE18sOIcxKXMK1G3DlKzh8blMyP7V51JWs8Wo0HO1dbfHC5PIQWj9hM+KHYMUPXC0xrQ54UqQwLxZsbVM72AdE/WkHvrcLkN/AWFaf7WuKmGA="
     # BINTRAY_KEY env var
     #- secure: "E++FmjzZZrvkJpUHZajLUaO1wd0QHcyVidVx8qVeGUJm/khCPBJuhkSe6R2BphcBeeAuhVlsXo26SWCAn89r2KT2OHB/lwtK2CWhO5vOl5bI5o4nFc+m55e2gDIebSBrXQPITEQJpQx1zBL4FVw/A2xQRl+IcjF/EiIzG8Znslc="
     # DOWNLOAD_APIKEY env var
@@ -45,6 +45,7 @@ env:
     - USE_GLBINDING=ON
 
 before_install:
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   # Possibly should not generate packages for all builds?
   - export PACKAGE="ON";
   - if [ "$TRAVIS_OS_NAME" = "linux" ] && [ "$CC" = "gcc" ] && [ "$BUILD_TYPE" = "Release" ]; then
