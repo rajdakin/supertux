@@ -27,7 +27,7 @@ class Camera
 {
 public:
 #ifndef SCRIPTING_API
-  Camera(::Camera* camera);
+  explicit Camera(::Camera* camera);
   ~Camera();
 #endif
 

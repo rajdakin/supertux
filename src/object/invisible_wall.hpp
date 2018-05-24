@@ -24,7 +24,7 @@
 class InvisibleWall : public MovingObject
 {
 public:
-  InvisibleWall(const ReaderMapping& lisp);
+  explicit InvisibleWall(const ReaderMapping& lisp);
 
   HitResponse collision(GameObject& other, const CollisionHit& hit);
   void draw(DrawingContext& context);

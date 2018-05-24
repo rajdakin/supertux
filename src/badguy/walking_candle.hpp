@@ -24,7 +24,7 @@ class Color;
 class WalkingCandle : public WalkingBadguy
 {
 public:
-  WalkingCandle(const ReaderMapping& reader);
+  explicit WalkingCandle(const ReaderMapping& reader);
 
   bool is_freezable() const;
   bool is_flammable() const;

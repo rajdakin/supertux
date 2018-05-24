@@ -32,7 +32,7 @@ private:
   ::TextObject* m_parent;
 
 public:
-  Text(::TextObject* parent);
+  explicit Text(::TextObject* parent);
   ~Text();
 
 private:

@@ -28,7 +28,7 @@ class Color;
 class ItemInactive : public MenuItem
 {
   public:
-    ItemInactive(const std::string& text_);
+    explicit ItemInactive(const std::string& text_);
 
     /** Returns true when the menu item has no action and therefore can be skipped.
         Useful for labels and horizontal lines.*/

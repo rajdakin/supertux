@@ -63,7 +63,7 @@ public:
   friend class SectorParser;
 
 public:
-  Sector(Level* parent);
+  explicit Sector(Level* parent);
   ~Sector();
 
   /// get parent level

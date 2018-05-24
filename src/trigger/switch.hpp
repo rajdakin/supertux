@@ -25,7 +25,7 @@
 class Switch : public TriggerBase
 {
 public:
-  Switch(const ReaderMapping& reader);
+  explicit Switch(const ReaderMapping& reader);
   virtual ~Switch();
   std::string get_class() const {
     return "switch";

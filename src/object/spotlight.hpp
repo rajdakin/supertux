@@ -28,7 +28,7 @@ class ReaderMapping;
 class Spotlight : public MovingObject
 {
 public:
-  Spotlight(const ReaderMapping& reader);
+  explicit Spotlight(const ReaderMapping& reader);
   virtual ~Spotlight();
 
   void update(float elapsed_time);

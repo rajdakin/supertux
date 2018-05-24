@@ -23,7 +23,7 @@
 class PointMarker : public MovingObject
 {
   public:
-    PointMarker(const Vector& pos);
+    explicit PointMarker(const Vector& pos);
     PointMarker();
     ~PointMarker();
 

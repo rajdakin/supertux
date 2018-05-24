@@ -46,7 +46,7 @@ public:
     height(rhs.height)
   {}
 
-  Sizef(const Size& rhs);
+  explicit Sizef(const Size& rhs);
 
   Sizef& operator*=(float factor)
   {

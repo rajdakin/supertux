@@ -24,7 +24,7 @@ class MrIceBlock : public WalkingBadguy,
                    public Portable
 {
 public:
-  MrIceBlock(const ReaderMapping& reader);
+  explicit MrIceBlock(const ReaderMapping& reader);
   MrIceBlock(const Vector& pos, Direction d);
 
   void initialize();
@@ -73,7 +73,7 @@ private:
 class SmartBlock : public MrIceBlock
 {
 public:
-  SmartBlock(const ReaderMapping& reader);
+  explicit SmartBlock(const ReaderMapping& reader);
 
   virtual std::string get_water_sprite() const {
     return "images/objects/water_drop/pink_drop.sprite";

@@ -31,7 +31,7 @@ private:
   ::Sector* m_parent;
 
 public:
-  Sector(::Sector* parent);
+  explicit Sector(::Sector* parent);
   ~Sector();
 
 private:

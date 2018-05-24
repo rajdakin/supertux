@@ -70,7 +70,7 @@ private:
   std::unique_ptr<PlayerStatus> m_player_status;
 
 public:
-  Savegame(const std::string& filename);
+  explicit Savegame(const std::string& filename);
   ~Savegame();
 
   /** Returns content of (tux ...) entry */

@@ -29,7 +29,7 @@ private:
   std::unique_ptr<Levelset> m_levelset;
 
 public:
-  ContribLevelsetMenu(std::unique_ptr<World> current_world);
+  explicit ContribLevelsetMenu(std::unique_ptr<World> current_world);
 
   void menu_action(MenuItem* item) override;
 

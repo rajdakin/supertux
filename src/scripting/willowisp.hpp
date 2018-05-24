@@ -32,7 +32,7 @@ private:
   ::WillOWisp* m_parent;
 
 public:
-  WillOWisp(::WillOWisp* parent);
+  explicit WillOWisp(::WillOWisp* parent);
   ~WillOWisp();
 
 private:

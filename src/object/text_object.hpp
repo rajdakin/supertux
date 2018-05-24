@@ -30,7 +30,7 @@ class TextObject : public GameObject,
 {
   static Color default_color;
 public:
-  TextObject(const std::string& name = std::string());
+  explicit TextObject(const std::string& name = std::string());
   virtual ~TextObject();
   virtual bool do_save() const {
     return false;

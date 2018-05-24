@@ -25,7 +25,7 @@
 class CoinExplode : public GameObject
 {
 public:
-  CoinExplode(const Vector& pos);
+  explicit CoinExplode(const Vector& pos);
   virtual void update(float elapsed_time);
   virtual void draw(DrawingContext& context);
   virtual bool do_save() const {

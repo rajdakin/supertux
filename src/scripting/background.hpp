@@ -31,7 +31,7 @@ private:
   ::Background* m_parent;
 
 public:
-  Background(::Background* parent);
+  explicit Background(::Background* parent);
   ~Background();
 
 private:

@@ -25,7 +25,7 @@
 class SmartBall : public WalkingBadguy
 {
 public:
-  SmartBall(const ReaderMapping& reader);
+  explicit SmartBall(const ReaderMapping& reader);
   SmartBall(const Vector& pos, Direction d);
 
   virtual std::string get_water_sprite() const {

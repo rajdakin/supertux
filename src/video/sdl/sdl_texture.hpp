@@ -33,7 +33,7 @@ protected:
   int m_height;
 
 public:
-  SDLTexture(SDL_Surface* sdlsurface);
+  explicit SDLTexture(SDL_Surface* sdlsurface);
   virtual ~SDLTexture();
 
   SDL_Texture *get_texture() const

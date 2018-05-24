@@ -45,7 +45,7 @@ class ParticleSystem : public GameObject,
                        public ExposedObject<ParticleSystem, scripting::ParticleSystem>
 {
 public:
-  ParticleSystem(float max_particle_size = 60);
+  explicit ParticleSystem(float max_particle_size = 60);
   virtual ~ParticleSystem();
   virtual std::string get_class() const override {
     return "particle-system";

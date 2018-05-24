@@ -31,9 +31,9 @@ class Platform : public MovingSprite,
                  public PathObject
 {
 public:
-  Platform(const ReaderMapping& reader);
+  explicit Platform(const ReaderMapping& reader);
   Platform(const ReaderMapping& reader, const std::string& default_sprite);
-  Platform(const Platform& platform);
+  explicit Platform(const Platform& platform);
   virtual void save(Writer& writer);
   virtual ObjectSettings get_settings();
 

@@ -47,7 +47,7 @@ private:
   Sizef m_text_size;
 
 public:
-  Dialog(bool passive = false);
+  explicit Dialog(bool passive = false);
   virtual ~Dialog();
 
   void set_text(const std::string& text);

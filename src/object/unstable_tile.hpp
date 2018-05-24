@@ -28,7 +28,7 @@
 class UnstableTile : public MovingSprite
 {
 public:
-  UnstableTile(const ReaderMapping& lisp);
+  explicit UnstableTile(const ReaderMapping& lisp);
 
   HitResponse collision(GameObject& other, const CollisionHit& hit);
   void update(float elapsed_time);

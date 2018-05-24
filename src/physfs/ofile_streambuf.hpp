@@ -23,7 +23,7 @@
 class OFileStreambuf : public std::streambuf
 {
 public:
-  OFileStreambuf(const std::string& filename);
+  explicit OFileStreambuf(const std::string& filename);
   ~OFileStreambuf();
 
 protected:

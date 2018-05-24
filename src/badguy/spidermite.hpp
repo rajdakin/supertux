@@ -22,8 +22,8 @@
 class SpiderMite : public BadGuy
 {
 public:
-  SpiderMite(const ReaderMapping& reader);
-  SpiderMite(const Vector& pos);
+  explicit SpiderMite(const ReaderMapping& reader);
+  explicit SpiderMite(const Vector& pos);
 
   void initialize();
   void active_update(float elapsed_time);

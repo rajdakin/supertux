@@ -25,7 +25,7 @@
 class PushButton : public MovingSprite
 {
 public:
-  PushButton(const ReaderMapping& reader);
+  explicit PushButton(const ReaderMapping& reader);
 
   HitResponse collision(GameObject& other, const CollisionHit& hit);
   void update(float elapsed_time);

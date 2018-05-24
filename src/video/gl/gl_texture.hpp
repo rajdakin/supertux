@@ -35,7 +35,7 @@ protected:
 
 public:
   GLTexture(unsigned int width, unsigned int height);
-  GLTexture(SDL_Surface* image);
+  explicit GLTexture(SDL_Surface* image);
   ~GLTexture();
 
   const GLuint &get_handle() const {
