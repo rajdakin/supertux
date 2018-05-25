@@ -81,8 +81,6 @@ public class Lexer {
                                 case 't':
                                     c = '\t';
                                     break;
-                                default:
-                                    break;
                             }
                         }
                         TokenStringBuilder.Append(c);
