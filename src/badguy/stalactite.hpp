@@ -22,7 +22,7 @@
 class Stalactite : public BadGuy
 {
 public:
-  Stalactite(const ReaderMapping& reader);
+  explicit Stalactite(const ReaderMapping& reader);
 
   void active_update(float elapsed_time);
   void collision_solid(const CollisionHit& hit);

@@ -22,7 +22,7 @@
 class Kugelblitz : public BadGuy
 {
 public:
-  Kugelblitz(const ReaderMapping& reader);
+  explicit Kugelblitz(const ReaderMapping& reader);
 
   void initialize();
   HitResponse collision_badguy(BadGuy& other, const CollisionHit& hit);

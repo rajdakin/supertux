@@ -10,7 +10,7 @@ public class ImageRegion {
     public Rectangle Region;
 }
 
-public class Attribute {
+public static class Attribute {
 	/// <summary>solid tile that is indestructible by Tux</summary>
 	public const int SOLID     = 0x0001;
 	/// <summary>uni-directional solid tile</summary>

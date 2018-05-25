@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections;
 
 public class LispWriter {
-    private TextWriter stream;
+    private readonly TextWriter stream;
     private int IndentDepth;
     private Stack lists = new Stack();
 
@@ -39,10 +39,11 @@ public class LispWriter {
     public void Write(string name, object value) {
         indent();
         stream.Write("(" + name);
+        IEnumerable enumerableValue = value as IEnumerable;
         if(value is string) {
-            stream.Write(" \"" + value.ToString() + "\"");
-        } else if(value is IEnumerable) {
-            foreach(object o in (IEnumerable) value) {
+            stream.Write(" \"" + value + "\"");
+        } else if(enumerableValue != null) {
+            foreach(object o in enumerableValue) {
                 stream.Write(" ");
                 WriteValue(o);
             }
@@ -59,7 +60,7 @@ public class LispWriter {
         } else if(val is int || val is float) {
             stream.Write(val.ToString());
         } else {
-            stream.Write("\"" + val.ToString() + "\"");
+            stream.Write("\"" + val + "\"");
         }
     }
 

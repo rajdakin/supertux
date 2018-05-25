@@ -25,7 +25,7 @@
 class Totem : public BadGuy
 {
 public:
-  Totem(const ReaderMapping& reader);
+  explicit Totem(const ReaderMapping& reader);
   ~Totem();
 
   void initialize();

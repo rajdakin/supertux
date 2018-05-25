@@ -25,7 +25,7 @@ class Portable;
 class Owl : public BadGuy
 {
 public:
-  Owl(const ReaderMapping& reader);
+  explicit Owl(const ReaderMapping& reader);
   Owl(const Vector& pos, Direction d);
   virtual void save(Writer& writer);
 

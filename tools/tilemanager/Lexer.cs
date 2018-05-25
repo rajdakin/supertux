@@ -67,7 +67,6 @@ public class Lexer {
                     NextChar();
                     return TokenType.CLOSE_PAREN;
                 case '"': { // string
-                    int startline = LineNumber;
                     while(true) {
                         NextChar();
                         if(c == '"')
@@ -81,6 +80,8 @@ public class Lexer {
                                     break;
                                 case 't':
                                     c = '\t';
+                                    break;
+                                default:
                                     break;
                             }
                         }

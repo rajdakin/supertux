@@ -24,7 +24,7 @@ class Timer;
 class Root : public BadGuy
 {
 public:
-  Root(const Vector& pos);
+  explicit Root(const Vector& pos);
   ~Root();
 
   void deactivate();

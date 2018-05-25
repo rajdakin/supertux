@@ -22,7 +22,7 @@
 class Dispenser : public BadGuy
 {
 public:
-  Dispenser(const ReaderMapping& reader);
+  explicit Dispenser(const ReaderMapping& reader);
 
   void draw(DrawingContext& context);
   void activate();

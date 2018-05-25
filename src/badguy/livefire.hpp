@@ -22,7 +22,7 @@
 class LiveFire : public WalkingBadguy
 {
 public:
-  LiveFire(const ReaderMapping& reader);
+  explicit LiveFire(const ReaderMapping& reader);
 
   void collision_solid(const CollisionHit& hit) override;
   HitResponse collision_badguy(BadGuy& badguy, const CollisionHit& hit) override;
@@ -56,7 +56,7 @@ protected:
 class LiveFireAsleep : public LiveFire
 {
 public:
-  LiveFireAsleep(const ReaderMapping& reader);
+  explicit LiveFireAsleep(const ReaderMapping& reader);
 
   void initialize();
   std::string get_class() const {
@@ -70,7 +70,7 @@ public:
 class LiveFireDormant : public LiveFire
 {
 public:
-  LiveFireDormant(const ReaderMapping& reader);
+  explicit LiveFireDormant(const ReaderMapping& reader);
 
   void initialize();
   std::string get_class() const {

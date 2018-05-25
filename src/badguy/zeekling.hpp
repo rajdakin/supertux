@@ -23,7 +23,7 @@
 class Zeekling : public BadGuy
 {
 public:
-  Zeekling(const ReaderMapping& reader);
+  explicit Zeekling(const ReaderMapping& reader);
   Zeekling(const Vector& pos, Direction d);
 
   void initialize();

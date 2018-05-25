@@ -22,7 +22,7 @@
 class MrTree : public WalkingBadguy
 {
 public:
-  MrTree(const ReaderMapping& reader);
+  explicit MrTree(const ReaderMapping& reader);
 
   bool is_freezable() const;
   std::string get_class() const {

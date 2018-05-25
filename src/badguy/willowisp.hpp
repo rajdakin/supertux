@@ -32,7 +32,7 @@ class WillOWisp : public BadGuy,
                   public PathObject
 {
 public:
-  WillOWisp(const ReaderMapping& reader);
+  explicit WillOWisp(const ReaderMapping& reader);
   virtual void save(Writer& writer);
 
   void activate();

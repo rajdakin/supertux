@@ -22,8 +22,8 @@
 class Iceflame : public Flame
 {
 public:
-  Iceflame(const ReaderMapping& reader);
-  Iceflame(const Iceflame& iceflame);
+  explicit Iceflame(const ReaderMapping& reader);
+  explicit Iceflame(const Iceflame& iceflame);
 
   void active_update(float elapsed_time);
 

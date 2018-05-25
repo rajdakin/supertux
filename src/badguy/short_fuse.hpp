@@ -23,7 +23,7 @@
 class ShortFuse : public WalkingBadguy
 {
 public:
-  ShortFuse(const ReaderMapping& reader);
+  explicit ShortFuse(const ReaderMapping& reader);
   std::string get_class() const {
     return "short_fuse";
   }

@@ -22,7 +22,7 @@
 class AngryStone : public BadGuy
 {
 public:
-  AngryStone(const ReaderMapping& reader);
+  explicit AngryStone(const ReaderMapping& reader);
 
   void collision_solid(const CollisionHit& hit);
   HitResponse collision_badguy(BadGuy& badguy, const CollisionHit& hit);

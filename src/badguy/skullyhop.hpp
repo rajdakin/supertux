@@ -25,7 +25,7 @@
 class SkullyHop : public BadGuy
 {
 public:
-  SkullyHop(const ReaderMapping& reader);
+  explicit SkullyHop(const ReaderMapping& reader);
   SkullyHop(const Vector& pos, Direction d);
 
   void initialize();

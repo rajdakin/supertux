@@ -22,8 +22,8 @@
 class Ghostflame : public Flame
 {
 public:
-  Ghostflame(const ReaderMapping& reader);
-  Ghostflame(const Ghostflame& ghostflame);
+  explicit Ghostflame(const ReaderMapping& reader);
+  explicit Ghostflame(const Ghostflame& ghostflame);
 
   bool is_flammable() const;
   bool is_freezable() const;

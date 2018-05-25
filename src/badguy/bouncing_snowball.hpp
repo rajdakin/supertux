@@ -22,7 +22,7 @@
 class BouncingSnowball : public BadGuy
 {
 public:
-  BouncingSnowball(const ReaderMapping& reader);
+  explicit BouncingSnowball(const ReaderMapping& reader);
   BouncingSnowball(const Vector& pos, Direction d);
 
   void initialize();

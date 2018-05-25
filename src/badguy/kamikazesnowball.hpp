@@ -22,7 +22,7 @@
 class KamikazeSnowball : public BadGuy
 {
 public:
-  KamikazeSnowball(const ReaderMapping& reader);
+  explicit KamikazeSnowball(const ReaderMapping& reader);
   KamikazeSnowball(const Vector& pos, Direction d);
 
   void initialize();
@@ -45,7 +45,7 @@ protected:
 class LeafShot : public KamikazeSnowball
 {
   public:
-    LeafShot(const ReaderMapping& reader);
+    explicit LeafShot(const ReaderMapping& reader);
 
     void initialize();
     bool is_freezable() const;
