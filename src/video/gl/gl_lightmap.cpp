@@ -64,8 +64,7 @@ GLLightmap::GLLightmap() :
   m_lightmap_height(),
   m_lightmap_uv_right(),
   m_lightmap_uv_bottom(),
-  fbo(0),
-  depthbuffer(0)
+  fbo(0)
 {
   m_lightmap_width = SCREEN_WIDTH / s_LIGHTMAP_DIV;
   m_lightmap_height = SCREEN_HEIGHT / s_LIGHTMAP_DIV;
@@ -79,14 +78,8 @@ GLLightmap::GLLightmap() :
   TextureManager::current()->register_texture(m_lightmap.get());
 
   glGenFramebuffers(1, &fbo);
-  glGenRenderbuffers(1, &depthbuffer);
-  
-  glBindRenderbuffer(GL_RENDERBUFFER, depthbuffer);
-  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, m_lightmap_width, m_lightmap_height);
-  glBindRenderbuffer(GL_RENDERBUFFER, 0);
   
   glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthbuffer);
   glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_lightmap->get_handle(), 0);
   
   GLenum err = glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -100,7 +93,6 @@ GLLightmap::GLLightmap() :
 GLLightmap::~GLLightmap()
 {
   glDeleteFramebuffers(1, &fbo);
-  glDeleteRenderbuffers(1, &depthbuffer);
 }
 
 void
